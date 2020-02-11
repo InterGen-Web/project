@@ -13,7 +13,51 @@
         
     </head>
 
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+          }
+          li {
+            float: left;
+          }
+
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+
+          li a:hover {
+            background-color: #111;
+          /*start of collapsible */
+          }
+
+    </style>
+
     <body style="font-family: Lucida Console">
+    <ul class="">
+      <!--<li><img src="interGenLogo.jpg" style="height:50%"></li> -->
+      <div class="container">
+        <!-- <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a> -->
+        <li><a class="active" href="index.html">InterGen</a></li>
+        <li><a href="index.html">Our Mission</a></li>
+        <!-- <li><a href="posts.html">Posts</a></li> -->
+        <li><a href="index.html">Log In / Sign Up</a></li>
+        <li><a href="index.html">More Information</a></li>
+      </div>
+    </ul>
+
         <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background">
@@ -34,7 +78,7 @@
     <li><a onclick="signOut()">Log Out</a></li>
   </ul>
   <a href="#" data-target="slide-out" class="large sidenav-trigger" id=sizemenu><i style="position: absolute; left:75px; top:150px; font-size: 2em; color: white; background-color: #2A2B41; border-radius: 50%; padding: 10px;" class="material-icons">menu</i></a>
-        <h3 class="center">Posts - Volunteer Now at One of These Locations:</h3>
+        <h3 class="center">Volunteer Now at One of These Locations:</h3>
         <div id="posts"></div>
 
 
