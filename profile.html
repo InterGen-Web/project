@@ -108,7 +108,7 @@
 
               .changeLook:hover {
                   cursor: pointer;
-                  background-color:;
+                  
 
               }
 
@@ -239,10 +239,7 @@
                     address:Address.value,
                     descrip:Description.value
                 
-                    }).then(()=>{
-                        window.open("seniorhomeselect.html","_parent")
-                    })
-                .catch((error)=> {
+                    }).catch((error)=> {
                     console.error("Error adding document: ", error);
                 });
             }
@@ -327,11 +324,12 @@
 
                 }else{
                     for(i=0;i<list.length;i++){
+                        console.log("hello")
                         db.collection("users").doc(userid).collection("Senior Homes").add({
                             home:list[i]
                         })
                     }
-                        window.open("posts.html","_parent")
+                        window.open("posts.html")
                     
                 }
                 
