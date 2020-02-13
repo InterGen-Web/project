@@ -180,7 +180,7 @@
             <h5>Select Senior Homes Near You (minimum of 5):</h5>
           <div class="changeLook" id="buttons" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
           </div>
-          <button onclick="sethomes()" style="background-color:#8860d0;align-content: center;" class="waves-effect waves-light btn">Advance</button>
+          <button onclick="sethomes();setprofile();" style="background-color:#8860d0;align-content: center;" class="waves-effect waves-light btn">Advance</button>
           <br>
           <br>
         </div>
@@ -318,6 +318,7 @@
                             list.push(residentialhome[i]["name"])
                         }
                     }
+                console.log(list)
                 if(count<5){
 
                     console.log("select more senior homes")
