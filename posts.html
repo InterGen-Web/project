@@ -143,6 +143,9 @@
                         //console.log(homelist)
                     });
                 }).then(()=>{
+                    if(homelist.length==0){
+                        alert("Please refresh page")
+                    }
                     for(i=0;i<homelist.length;i++){
                         for(j=0;j<list1.length;j++){
                             if(homelist[i]==list1[j]['home']){
