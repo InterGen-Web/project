@@ -129,6 +129,7 @@
         }
         function write(list1){
             console.log("hello")
+            console.log(list1)
                 let homelist=[];
                 var string;
                 var count;
@@ -162,15 +163,20 @@
                         }
                     }
                 })
+                if(homelist.length==0){
+                    alert("Please refresh page")
+                }
             
         }
         function createposts(){
             
             var list1=[];
             var count;
+            var count1;
             db.collection("Posts").get().then((dataget)=>{
                 dataget.forEach((doc)=>{
                     count=0;
+                    count1=count1+1;
                     //console.log(doc.id)
                     //home.push(doc.id)
                     db.collection("Posts").doc(doc.id).collection("s").get().then((query)=>{
@@ -187,12 +193,7 @@
                 write(list1)
                 //console.log(home)
                 //console.log(num)
-            })
-            db.collection("Posts").get().then((query)=>{
-                query.forEach((doc)=>{
-                    //console.log(doc.id)
-                })
-            })  
+            }) 
         }
 
         function seeposts(stuff){
@@ -202,35 +203,15 @@
         }
         
 
-//        setTimeout(function signOut() {
-  //            firebase.auth().signOut().then(()=> {
-    //              M.toast({html: 'Logout Successful'})
-      //            console.log("signed out");
-        //          console.log("after")
-          //        
-            //      //window.open("index.html","_parent")
-              //}
-//
-  //            ).catch(function(error) {
-    //        // An error happened.
-//              });
-    //          })
-           //Redirect with JavaScript
-           
-    //    } 1500;
-        
-
-
-
         function signOut(){
-        M.toast({html: 'Logout Successful'})
-        firebase.auth().signOut().then(()=> {
-            console.log("signed out")
-            window.open("index.html","_parent")
-        }).catch(function(error) {
-      // An error happened.
-        });
-    }
+            M.toast({html: 'Logout Successful'})
+            firebase.auth().signOut().then(()=> {
+                console.log("signed out")
+                window.open("index.html","_parent")
+            }).catch(function(error) {
+        // An error happened.
+            });
+        }
             
         
         </script>
