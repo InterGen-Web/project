@@ -73,11 +73,32 @@
             console.log(getData)
             db.collection("Posts").doc(getData).collection("s").get().then((dataget)=>{
                 dataget.forEach((doc)=>{
-                    string=string+"<div class='card blue-grey lighten-2'><div class='card-content white-text'><span class='card-title' >The Dunfield Retirement Residence</span><p>"+doc.data()['name']+". Age "+doc.data()['age']+". "+doc.data()['interests']+".</p></div><div class='card-action'><a href='#'>Connect</a></div></div>"
+                    string=string+"<div id='card' class='card blue-grey lighten-2'><div class='card-content white-text'><span class='card-title' >"+getData+"</span><p>"+doc.data()['name']+". Age "+doc.data()['age']+". "+doc.data()['interests']+".</p></div><div class='card-action'><a href='#'>Connect</a></div></div>"
                 })
             }).then(()=>{
                 document.getElementById("posts").innerHTML=string;
             })
+        }
+        function connect(){
+            var getData=window.localStorage.getItem("HomeName");
+            //create meeting time
+            var days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            var date=new Date;
+            var days=date.getDate();
+            var month=date.getMonth();
+            console.log(days)
+            if(days>(days_in_months[month]-7)){
+                days=days_in_months[month]-days+7;
+                month =month+1;
+            }else{
+                days=days+7;
+            }
+            db.collection("users").doc(userid).collection("posts").add({
+                date:months[month]+" "+days,
+                home: getData
+            })
+            alert("Meeting set for "+months[month]+" "+days)
         }
     </script>
         
