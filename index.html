@@ -390,21 +390,34 @@ end sidenav -->
             }
             
             function logIn(){
-                if(emailVerified==true){
+                console.log(emailVerified)
                     email=emailInput.value;
                     password=passwordInput.value;
                     firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
                         console.log("worked");
-                        window.open("posts.html");
+                        firebase.auth().onAuthStateChanged((user)=> {
+                            if (user) {
+                                emailVerified = user.emailVerified;
+                                console.log(emailVerified)
+                                userid = user.uid;
+                                console.log(userid)
+                            } else {
+                                console.log('not signed in')
+                            }
+                        });
+                        if(emailVerified==true){
+                            window.open("posts.html");
+                        }else{
+                            alert("not verified")
+                        }
+                        
                     }).catch((error)=> {
                         var errorCode = error.code;
                         var errorMessage = error.message;
                         document.getElementById("errors").innerHTML=errorMessage;
                         console.error(errorMessage)
                     });
-                }else{
-                    alert("not verified")
-                }
+                
             }
 
       document.addEventListener('DOMContentLoaded', function() {
