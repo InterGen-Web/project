@@ -358,11 +358,12 @@ end sidenav -->
             const db = firebase.firestore();
             const emailInput = document.getElementById("email");
             const passwordInput = document.getElementById("password");
+            let emailVerified;
             firebase.auth().onAuthStateChanged((user)=> {
               if (user) {
                     // User is signed in.
             //        let email = user.email;
-            //        let emailVerified = user.emailVerified;
+                   let emailVerified = user.emailVerified;
                   userid = user.uid;
             //        let providerData = user.providerData;
                   console.log(userid)
@@ -389,17 +390,21 @@ end sidenav -->
             }
             
             function logIn(){
-                email=emailInput.value;
-                password=passwordInput.value;
-                firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
-                    console.log("worked");
-                    window.open("posts.html","_parent");
-                }).catch((error)=> {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.error(errorMessage)
-                    alert(`Error | ${error.code} ${error.message} Make sure your login information is correct`);
-                });
+                if(emailVerified==true){
+                    email=emailInput.value;
+                    password=passwordInput.value;
+                    firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
+                        console.log("worked");
+                        window.open("posts.html");
+                    }).catch((error)=> {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        document.getElementById("errors").innerHTML=errorMessage;
+                        console.error(errorMessage)
+                    });
+                }else{
+                    alert("not verified")
+                }
             }
 
       document.addEventListener('DOMContentLoaded', function() {
