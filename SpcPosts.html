@@ -73,7 +73,7 @@
             console.log(getData)
             db.collection("Posts").doc(getData).collection("s").get().then((dataget)=>{
                 dataget.forEach((doc)=>{
-                    string=string+"<div id='card' class='card blue-grey lighten-2'><div class='card-content white-text'><span class='card-title' >"+getData+"</span><p>"+doc.data()['name']+". Age "+doc.data()['age']+". "+doc.data()['interests']+".</p></div><div class='card-action'><a href='#'>Connect</a></div></div>"
+                    string=string+"<div id='card' class='card blue-grey lighten-2'><div class='card-content white-text'><span class='card-title' >"+getData+"</span><p>"+doc.data()['name']+". Age "+doc.data()['age']+". "+doc.data()['interests']+".</p></div><div class='card-action'><button onclick='connect()' >Connect</button></div></div>"
                 })
             }).then(()=>{
                 document.getElementById("posts").innerHTML=string;
