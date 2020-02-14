@@ -401,15 +401,16 @@ end sidenav -->
                                 console.log(emailVerified)
                                 userid = user.uid;
                                 console.log(userid)
+                                if(emailVerified==true){
+                                    window.open("posts.html", "_parent");
+                                }else{
+                                    alert("not verified")
+                                }
                             } else {
                                 console.log('not signed in')
                             }
                         });
-                        if(emailVerified==true){
-                            window.open("posts.html");
-                        }else{
-                            alert("not verified")
-                        }
+
                         
                     }).catch((error)=> {
                         var errorCode = error.code;
