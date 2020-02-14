@@ -35,6 +35,9 @@
         </div>
         <button onclick="changep()">Edit Profile</button>
         <button onclick="changes()">Change Senior Homes</button>
+        
+        <div id="posts">Upcoming Posts</div>
+        
     <script>
         document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
@@ -78,6 +81,11 @@
             function getData(useremail){
                 console.log(userid)
                 console.log(useremail)
+                
+                var date=new Date;
+                var days=date.getDate();
+                var month=date.getMonth();
+                
                 db.collection("users").doc(userid).collection("profile").doc("info").get().then((dataget1)=>{
                     dataget=dataget1.data()
                     document.getElementById("name").innerHTML=dataget['first']+" "+dataget['last'];
@@ -87,6 +95,21 @@
 
                 });
                 document.getElementById("email").innerHTML=useremail;
+                var str=document.getElementById("posts").innerHTML;
+                db.collection("users").doc(userid).collection("posts").get().then((snapshot)=>{
+                    snapshot.forEach((doc)=>{
+                        var splitted=doc.data()['date2'].split("/ ")
+                        
+                        if(parseInt(splitted[1])>month-1 && parseInt(splitted[0])>days){
+                            str+="<p>" +doc.data()['date']+" at "+ doc.data()['home']+"</p>"
+                        }else{
+                            db.collection("users").doc(userid).collection("posts").doc(doc.id).delete()
+                        }
+                        
+                    })
+                }).then(()=>{
+                    document.getElementById("posts").innerHTML=str;
+                })
             }
         
         function changep(){
