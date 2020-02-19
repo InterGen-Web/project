@@ -14,16 +14,46 @@
     </head>
 
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-            margin-top: 0px;
-            margin-bottom: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
+        /* tootltip start */
+        .tooltip {
+          position: relative;
+          display: inline-block;
+          border-bottom: 1px dotted transparent;
+          font-family: Lucida Console;
+
+        }
+
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          right:105%;
+          top: -5px;
+          width:300px;
+          background-color: white;
+          color: black;
+          border-color: #84ceeb;
+          text-align: center;
+          border-radius: 1px;
+          border-width: 4px;
+          border-style: solid;
+          padding: 2.5px;
+          margin-top: 5px;
+          font-size: 10px;
+
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+          font-family: Lucida Console;
+
+          opacity: 0;
+          transition: opacity 1s;
+          border-radius: 25%;
+        }
+
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+
+          /* tootltip end */
 
           }
           li {
@@ -33,7 +63,7 @@
           li a {
             display: block;
             color: white;
-            text-align: center;
+            /*text-align: center; */
             padding: 14px 16px;
             text-decoration: none;
           }
@@ -43,20 +73,50 @@
           /*start of collapsible */
           }
 
+          .centervisito {
+            text-align: center;
+            grid-row: 0;
+            background-color: transparent;
+            margin-left: 50px;
+            margin-right: 50px;
+            color: #2A2B41;
+            margin-top: 0px;
+          }
+
+          a:hover {
+            color: #F5F5F5;
+            cursor: pointer;
+          }
+
     </style>
 
-    <body style="font-family: Lucida Console">
-    <ul class="">
-      <!--<li><img src="interGenLogo.jpg" style="height:50%"></li> -->
+    <body style="font-family: Lucida Console;background-image: linear-gradient(to bottom right, #c1c8e4, #84ceeb, #8860d0,#5ab9ea);">
+    <!-- <ul class="">
+      <li><img src="interGenLogo.jpg" style="height:50%"></li>
       <div class="container">
-        <!-- <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a> -->
+        <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a>
         <li><a class="active" href="index.html">InterGen</a></li>
         <li><a href="index.html">Our Mission</a></li>
-        <!-- <li><a href="posts.html">Posts</a></li> -->
+        <li><a href="posts.html">Posts</a></li>
         <li><a href="index.html">Log In / Sign Up</a></li>
         <li><a href="index.html">More Information</a></li>
       </div>
-    </ul>
+    </ul> -->
+
+    <nav style="background-color:transparent; height:12%; margin:0px; width:100%;"> <!-- navbar content here  --> 
+      <h1 class=centerVisito style="padding-top: 10px;color:#2A2B41;"> InterGen
+        <div class = "tooltip" style="position: absolute; padding-top:0px;margin-bottom:100px;right:225px; font-size: 0.6em;">ℹ
+        <span class="tooltiptext" style="font-size: 14px;">Schedule a visit with a local senior by selecting...</span>
+    </div>
+
+    </h1>
+      <h2><h2>
+        <!--ℹℹ️info_outline-->
+
+    </nav>
+
+
+    
 
         <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
@@ -68,19 +128,28 @@
       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
     </div></li>
 
-    <li><a href="mission.html">Our Mission</a></li>
+    <li><a href="index.html" style="align-content: left;">Our Mission</a></li>
     <li><a href="posts.html">Posts</a></li>
     <li><a href="additionalinfo.html">Additional Information</a></li>
-    <li><a href="chats.html">Chats</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Profile</a></li>
     <li><a class="waves-effect" href="profilepage.html">Your Account</a></li>
     <li><a onclick="signOut()">Log Out</a></li>
   </ul>
-  <a href="#" data-target="slide-out" class="large sidenav-trigger" id=sizemenu><i style="position: absolute; left:75px; top:150px; font-size: 2em; color: white; background-color: #2A2B41; border-radius: 50%; padding: 10px;" class="material-icons">menu</i></a>
-        <h3 class="center">Volunteer Now at One of These Locations:</h3>
-        <div id="posts"></div>
+  <a href="#" data-target="slide-out" class="large sidenav-trigger" id=sizemenu><i style="position: absolute; left:220px; top:20px; font-size: 2em; color: white; background-color: #8860d0; border-radius: 50%; border-color: black; padding: 10px;border: 1px solid;" class="material-icons">menu</i></a>
+        <!-- <h5 class="">Volunteer Now at One of These Locations:</h5> -->
+        <div class="div">
 
+            <br>
+            <br>
+
+            <h4 class="container" style="color: #2A2B41;">Volunteer at One of These Locations:</h4>
+
+            <br>
+            
+        </div>
+        <div id="posts"></div>
+        <!-- <h5 class="">Volunteer Now at One of These Locations:</h5> -->
 
         
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
@@ -129,7 +198,6 @@
         }
         function write(list1){
             console.log("hello")
-            console.log(list1)
                 let homelist=[];
                 var string;
                 var count;
@@ -143,9 +211,6 @@
                         //console.log(homelist)
                     });
                 }).then(()=>{
-                    if(homelist.length==0){
-                        alert("Please refresh page")
-                    }
                     for(i=0;i<homelist.length;i++){
                         for(j=0;j<list1.length;j++){
                             if(homelist[i]==list1[j]['home']){
@@ -155,7 +220,7 @@
                                 if(homelist[i]!=undefined){
                                     console.log(homelist[i])
                                     name=homelist[i]
-                                    string=string+"<div class='container'><div class='card-panel grey lighten-5 z-depth-1'><h5 style='color: #2A2B41'>"+homelist[i]+" | "+list1[j]['num']+" Patients Unoccupied | <button onclick='seeposts(\""+name+"\")' class='waves-effect waves-light btn-small' style='background-color: #2A2B41;justify-content:flex-end;'>More Info</button></h5></div></div>"
+                                    string=string+"<div class='container'><div style='display:flex;justify-content:space-between' class='card-panel grey lighten-5 z-depth-1'><h5 style='color: #2A2B41'>"+homelist[i]+" | "+list1[j]['num']+" Patients Unoccupied | <button onclick='seeposts(\""+name+"\")'class='waves-effect waves-light btn-small'style='background-color: #2A2B41;font-family: Lucida Console; margin-right:px;align:right;background-color:#8860d0;''>More Info</button></h5></div></div>"
                                     if(i==homelist.length-1){
                                         done(string)
                                     }
@@ -172,11 +237,9 @@
             
             var list1=[];
             var count;
-            var count1;
             db.collection("Posts").get().then((dataget)=>{
                 dataget.forEach((doc)=>{
                     count=0;
-                    count1=count1+1;
                     //console.log(doc.id)
                     //home.push(doc.id)
                     db.collection("Posts").doc(doc.id).collection("s").get().then((query)=>{
@@ -193,7 +256,12 @@
                 write(list1)
                 //console.log(home)
                 //console.log(num)
-            }) 
+            })
+            db.collection("Posts").get().then((query)=>{
+                query.forEach((doc)=>{
+                    //console.log(doc.id)
+                })
+            })  
         }
 
         function seeposts(stuff){
@@ -201,17 +269,26 @@
             window.localStorage.setItem("HomeName",stuff);
             window.open("SpcPosts.html","_parent")
         }
+            
+    
         
 
+
+
         function signOut(){
-            M.toast({html: 'Logout Successful'})
-            firebase.auth().signOut().then(()=> {
-                console.log("signed out")
-                window.open("index.html","_parent")
-            }).catch(function(error) {
-        // An error happened.
-            });
-        }
+        M.toast({html: 'Logout Successful'})
+        firebase.auth().signOut().then(()=> {
+            console.log("signed out")
+            window.open("index.html","_parent")
+        }).catch(function(error) {
+      // An error happened.
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.tooltipped');
+      var instances = M.Tooltip.init(elems, options);
+    });
             
         
         </script>
