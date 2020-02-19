@@ -1,41 +1,160 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    </head>
-    <body>
-        <ul id="slide-out" class="sidenav">
-    <li><div class="user-view">
-      <div class="background">
-        <!-- <img src="images/office.jpg">
-      </div>
-      <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li>
-    <li><a href="mission.html">Our Mission</a></li>
-    <li><a href="posts.html">Posts</a></li>
-    <li><a href="additionalinfo.html">Additional Information</a></li>
-    <li><a href="#!">Chats</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Profile</a></li>
-    <li><a class="waves-effect" href="profilepage.html">Your Account</a></li>
-  </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">Activate Sidenav</i></a>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+        <style>
+        /* tootltip start */
+        .tooltip {
+          position: relative;
+          display: inline-block;
+          border-bottom: 1px dotted transparent;
+          font-family: Lucida Console;
+
+        }
+
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          right:105%;
+          top: -5px;
+          width:300px;
+          background-color: white;
+          color: black;
+          border-color: #84ceeb;
+          text-align: center;
+          border-radius: 1px;
+          border-width: 4px;
+          border-style: solid;
+          padding: 2.5px;
+          margin-top: 5px;
+          font-size: 10px;
+
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+          font-family: Lucida Console;
+
+          opacity: 0;
+          transition: opacity 1s;
+          border-radius: 25%;
+        }
+
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+
+          /* tootltip end */
+
+          }
+          li {
+            float: left;
+          }
+
+          li a {
+            display: block;
+            color: white;
+            /*text-align: center; */
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+
+          li a:hover {
+            background-color: #111;
+          /*start of collapsible */
+          }
+
+          .centervisito {
+            text-align: center;
+            grid-row: 0;
+            background-color: transparent;
+            margin-left: 50px;
+            margin-right: 50px;
+            color: #2A2B41;
+            margin-top: 0px;
+          }
+
+          a:hover {
+            color: #F5F5F5;
+            cursor: pointer;
+          }
+
+    </style>
+
+	</head>
+
+
+	<body style="font-family: Lucida Console;background-image: linear-gradient(to bottom right, #c1c8e4, #84ceeb, #8860d0,#5ab9ea);">
+
+		<nav style="background-color:transparent; height:12%; margin:0px; width:100%;"> <!-- navbar content here  --> 
+	      <h1 class=centerVisito style="padding-top: 10px;color:#2A2B41;"> InterGen
+	        <div class = "tooltip" style="position: absolute; padding-top:0px;margin-bottom:100px;right:225px; font-size: 0.6em;">ℹ
+	        <span class="tooltiptext" style="font-size: 14px;">Schedule a visit with a local senior by selecting...</span>
+	    </div>
+
+	    </h1>
+	      <h2><h2>
+	        <!--ℹℹ️info_outline-->
+
+	    </nav>
+
+
+	    
+
+	        <ul id="slide-out" class="sidenav">
+	    <li><div class="user-view">
+	      <div class="background">
+	        <!-- <img src="images/office.jpg">
+	      </div>
+	      <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
+	      <a href="#name"><span class="white-text name">John Doe</span></a>
+	      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+	    </div></li>
+
+	    <li><a href="mission.html" style="align-content: left;">Our Mission</a></li>
+	    <li><a href="posts.html">Posts</a></li>
+	    <li><a href="additionalinfo.html">Additional Information</a></li>
+	    <li><div class="divider"></div></li>
+	    <li><a class="subheader">Profile</a></li>
+	    <li><a class="waves-effect" href="profilepage.html">Your Account</a></li>
+	    <li><a onclick="signOut()">Log Out</a></li>
+	  </ul>
+<a href="#" data-target="slide-out" class="large sidenav-trigger" id=sizemenu><i style="position: absolute; left:220px; top:20px; font-size: 2em; color: white; background-color: #8860d0; border-radius: 50%; border-color: black; padding: 10px;border: 1px solid;" class="material-icons">menu</i></a>
+		<div class="container">
+
+			  <h1>InterGen - What We Do</h1>
+			  <p style="font-size: 20px;">Through the use of a dynamic website that can create accounts, usernames, and posts, InterGen connects senior citizens in hospitals and senior homes with high school students. Human interaction is essential for the good health of people but sometimes difficult to find as senior citizens. Whether families and friends are busy or far away, there are a variety of reasons why some seniors are alone and lacking interaction. This can be detrimental to one's emotional and even physical health, and symptoms are amplified in hospitals and senior homes. For this reason, InterGen provides a platform for students to visit seniors in retirement homes.</p>
+			   <br>
+			  <br>
+		</div>
+
+
+
+
+
+		<script>
+
+document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {
       inDuration:800,
       outDuration:800
     });
      });
-        
-    
-    
-        
-    </script>
-        
-        
-    </body>
+document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.tooltipped');
+      var instances = M.Tooltip.init(elems, options);
+    });
+
+		</script>
+	</body>
+
+
+
 </html>
