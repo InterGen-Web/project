@@ -180,7 +180,7 @@
             <h5>Select Senior Homes Near You (minimum of 5):</h5>
           <div class="changeLook" id="buttons" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
           </div>
-          <button onclick="sethomes();setprofile();" style="background-color:#8860d0;align-content: center;" class="waves-effect waves-light btn">Advance</button>
+          <button onclick="sethomes();" style="background-color:#8860d0;align-content: center;" class="waves-effect waves-light btn">Advance</button>
           <br>
           <br>
         </div>
@@ -230,19 +230,19 @@
               }
             });
 
-            function setprofile(){
-                console.log(userid)
-                db.collection("users").doc(userid).collection("profile").doc("info").set({
-                    first: FirstName.value,
-                    last: LastName.value,
-                    age:Age.value, 
-                    address:Address.value,
-                    descrip:Description.value
+//             function setprofile(){
+//                 console.log(userid)
+//                 db.collection("users").doc(userid).collection("profile").doc("info").set({
+//                     first: FirstName.value,
+//                     last: LastName.value,
+//                     age:Age.value, 
+//                     address:Address.value,
+//                     descrip:Description.value
                 
-                    }).catch((error)=> {
-                    console.error("Error adding document: ", error);
-                });
-            }
+//                     }).catch((error)=> {
+//                     console.error("Error adding document: ", error);
+//                 });
+//             }
 
             //collapsible start
             var coll = document.getElementsByClassName("collapsible");
