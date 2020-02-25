@@ -355,11 +355,11 @@
                     }
                     console.log(userid)
                     db.collection("users").doc(userid).collection("profile").doc("info").set({
-                          first: FirstName.value,
-                          last: LastName.value,
-                          age:Age.value, 
-                          address:Address.value,
-                          descrip:Description.value
+                          first: FirstName,
+                          last: LastName,
+                          age:Age, 
+                          address:Address,
+                          descrip:Description
                       
                         }).catch((error)=> {
                         console.error("Error adding document: ", error);
