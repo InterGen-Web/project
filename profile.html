@@ -307,6 +307,17 @@
                 }
             }
             function sethomes(){
+
+                FirstName=FirstName.value.trim()
+                LastName=LastName.value.trim()
+                Age=Age.value.trim()
+                Address=Address.value.trim()
+                Description=Description.value.trim()
+                console.log(FirstName)
+                console.log(LastName)
+                console.log(Age)
+                console.log(Address)
+                console.log(Description)
                 var count=0;
                 var list=[];
                 for(i=0;i<residentialhome.length;i++){
@@ -316,10 +327,18 @@
                         }
                     }
                 console.log(list)
-                if(count<5){
-
+                if((count<5) || (FirstName=="") || (LastName=="") || (Age=="") || (Address=="") || (Description=="")){
+                  console.log("error")
+                  if(count<5){
                     console.log("select more senior homes")
                     alert(`Error - Ensure You've Selected At Least 5 Options`);
+                  }
+                  
+                  if((FirstName=="") || (LastName=="") || (Age=="") || (Address=="") || (Description=="")){
+                    console.log("please")
+                    alert("Please make sure all information is completed at the top of the page")
+                  }
+                    
 
 
                 }else{
@@ -329,6 +348,17 @@
                             home:list[i]
                         })
                     }
+                    console.log(userid)
+                    db.collection("users").doc(userid).collection("profile").doc("info").set({
+                          first: FirstName.value,
+                          last: LastName.value,
+                          age:Age.value, 
+                          address:Address.value,
+                          descrip:Description.value
+                      
+                        }).catch((error)=> {
+                        console.error("Error adding document: ", error);
+                    });
                         window.open("posts.html")
                     
                 }
