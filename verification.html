@@ -31,7 +31,7 @@
             <div id="stuff">
                 <button onclick='verify()' class="waves-effect waves-light btn-large" style="background-color: #8860d0">Send Verification</button>
                 <p style="padding-top:20px;"><b>Refresh once verified to continue</b></p>
-                <p>Didn't work? Try again:</p>
+                <p>Didn't work? Return to main page and sign up again:</p>
                 <a onclick='home()'><u>return to main page</u></a>
                 <div id="buttons"></div>
             </div>
@@ -94,7 +94,14 @@
                 }
 
                 function home(){
-                    window.open("index.html", "_parent")
+                    var user = firebase.auth().currentUser;
+
+                    user.delete().then(()=>{
+                        window.open("index.html", "_parent")
+                    }).catch((error)=> {
+                        console.error(error)
+                    });
+                    //window.open("index.html", "_parent")
                 }
 
 
