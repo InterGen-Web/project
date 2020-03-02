@@ -225,6 +225,16 @@
 //         function changes(){
 //             window.open("seniorhomechange.html","_parent")
 //         }
+
+        function signOut(){
+            M.toast({html: 'Logout Successful'})
+            firebase.auth().signOut().then(()=> {
+                console.log("signed out")
+                window.open("index.html","_parent")
+            }).catch(function(error) {
+        // An error happened.
+            });
+        }
     </script>
         
         
