@@ -205,6 +205,11 @@
                 document.getElementById("email").innerHTML=useremail;
                 var str=document.getElementById("posts").innerHTML;
                 db.collection("users").doc(userid).collection("posts").get().then((snapshot)=>{
+                    sized=snapshot.size;
+                    console.log(sized)
+                    if(sized>0){
+                        str="";
+                    }
                     snapshot.forEach((doc)=>{
                         var splitted=doc.data()['date2'].split("/ ")
                         
