@@ -145,14 +145,11 @@
           <!--<li><img src="interGenLogo.jpg" style="height:50%"></li> -->
           <div class="container">
             <!-- <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a> -->
-            <li><a class="" href="#">InterGen</a></li>
-            <!-- <li><a href="index.html">Our Mission</a></li> -->
-            
+            <li><a class="active" href="index.html">InterGen</a></li>
+            <li><a href="index.html">Our Mission</a></li>
             <!-- <li><a href="posts.html">Posts</a></li> -->
-            <li><a class="active" href="#">Profile Update</a></li>
-
-            <li><a class="" href="#">Posts</a></li>
-            <!-- <li><a href="index.html">More Information</a></li> -->
+            <li><a href="index.html">Log In / Sign Up</a></li>
+            <li><a href="index.html">More Information</a></li>
           </div>
         </ul>
 
@@ -161,7 +158,7 @@
 
         <div class="container">
         
-        <h1>Update Your Profile</h1>
+        <h1>Set Up Your Profile</h1>
         <h6><b>First Name:</h6>
         <input type="text" id="Firstname" placeholder="John" style="color: black;">
         <h6><b>Last Name:</h6>
@@ -256,8 +253,9 @@
             //collapsible end
 
             //seniorhomeselect start
+            console.log(data.length)
             var residentialhome = [];
-            for(i=0;i<data.length;i++){
+            for(i=0;i<data[0]["features"].length;i++){
                 var strings=data[0]["features"][i]["properties"]["NAME"];
                 residentialhome.push({
                     name:strings,
@@ -268,12 +266,13 @@
             console.log(residentialhome)
             var string="";
             for(i=0;i<data[0]["features"].length;i++){
-                string=string + "<a class='selections' style='justify-content: space-evenly;' id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) style=';'>"+data[0]["features"][i]["properties"]["NAME"]+"<br>"+data[0]["features"][i]["properties"]["ADDRESS"]+"</a>"
+                string=string + "<a class='selections' style='justify-content: space-evenly;' id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) >"+data[0]["features"][i]["properties"]["NAME"]+"<br>"+data[0]["features"][i]["properties"]["ADDRESS"]+"</a>"
 
 
                 ;
                 
             }
+            console.log(string)
             document.getElementById("buttons").innerHTML=string;
             
             for(i=0;i<data[0]["features"].length;i++){
@@ -284,16 +283,32 @@
                 })
             }
             function changecolour(info){
-                console.log(info)
+                // console.log(data[0]["features"])
+                // console.log(info)
+                // console.log(residentialhome)
+                
                 for(i=0;i<data[0]["features"].length;i++){
+                    // console.log(i)
+                    // console.log(residentialhome[i]['name'])
                     if(info==residentialhome[i]['name']){
-                        if(residentialhome[i]['value']==false){
-                            residentialhome[i]['value']=true;
-                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#8860d0";
-                        } else if(residentialhome[i]['value']==true){
-                            residentialhome[i]['value']=false;
-                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#808080";
+                      console.log(i)
+                      if(i!=57){
+                        if(residentialhome[i+1]['value']==false){
+                            residentialhome[i+1]['value']=true;
+                            document.getElementById(data[0]['features'][i+1]['properties']['NAME']).style.background="#8860d0";
+                        } else if(residentialhome[i+1]['value']==true){
+                            residentialhome[i+1]['value']=false;
+                            document.getElementById(data[0]['features'][i+1]['properties']['NAME']).style.background="#808080";
                         }
+                      }else{
+                        if(residentialhome[0]['value']==false){
+                            residentialhome[0]['value']=true;
+                            document.getElementById(data[0]['features'][0]['properties']['NAME']).style.background="#8860d0";
+                        } else if(residentialhome[0]['value']==true){
+                            residentialhome[0]['value']=false;
+                            document.getElementById(data[0]['features'][0]['properties']['NAME']).style.background="#808080";
+                        }
+                      }
                         
                     }
                 }
@@ -368,13 +383,13 @@
             }
             function previoushome(){
                 db.collection("users").doc(userid).collection("profile").doc("info").get().then((dataget)=>{
-                    data=dataget.data();
-                    console.log(data["first"])
-                    FirstName.value=data["first"]
-                    LastName.value=data["last"]
-                    Age.value=data["age"]
-                    Address.value=data["address"]
-                    descrip.value=data["descrip"]
+                    data2=dataget.data();
+                    console.log(data2["first"])
+                    FirstName.value=data2["first"]
+                    LastName.value=data2["last"]
+                    Age.value=data2["age"]
+                    Address.value=data2["address"]
+                    descrip.value=data2["descrip"]
                 })
                 var list1=[];
                 var list2=[];
