@@ -293,19 +293,19 @@
                     if(info==residentialhome[i]['name']){
                       console.log(i)
                       if(i!=57){
-                        if(residentialhome[i+1]['value']==false){
-                            residentialhome[i+1]['value']=true;
+                        if(residentialhome[i]['value']==false){
+                            residentialhome[i]['value']=true;
                             document.getElementById(data[0]['features'][i+1]['properties']['NAME']).style.background="#8860d0";
-                        } else if(residentialhome[i+1]['value']==true){
-                            residentialhome[i+1]['value']=false;
+                        } else if(residentialhome[i]['value']==true){
+                            residentialhome[i]['value']=false;
                             document.getElementById(data[0]['features'][i+1]['properties']['NAME']).style.background="#808080";
                         }
                       }else{
-                        if(residentialhome[0]['value']==false){
-                            residentialhome[0]['value']=true;
+                        if(residentialhome[i]['value']==false){
+                            residentialhome[i]['value']=true;
                             document.getElementById(data[0]['features'][0]['properties']['NAME']).style.background="#8860d0";
-                        } else if(residentialhome[0]['value']==true){
-                            residentialhome[0]['value']=false;
+                        } else if(residentialhome[i]['value']==true){
+                            residentialhome[i]['value']=false;
                             document.getElementById(data[0]['features'][0]['properties']['NAME']).style.background="#808080";
                         }
                       }
