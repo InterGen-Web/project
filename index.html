@@ -383,12 +383,22 @@ To conclude, we believe that our app can create a lasting impact on both sectors
                                     window.open("posts.html", "_parent");
                                 }else{
                                     alert("not verified")
-                                    window.open("verification.html", "parent");
                                 }
                             } else {
                                 console.log('not signed in')
                             }
                         });
+
+                        
+                    }).catch((error)=> {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        //document.getElementById("errors").innerHTML=errorMessage;
+                        console.error(errorMessage)
+                        alert(errorMessage)
+                    });
+                
+            }
 
                         
                     }).catch((error)=> {
